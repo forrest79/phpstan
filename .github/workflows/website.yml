@@ -22,12 +22,12 @@ jobs:
 
     steps:
       - name: "Checkout"
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: "Install Node"
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v5
         with:
-          node-version: "18"
+          node-version: "22"
           cache: "npm"
           cache-dependency-path: website/package-lock.json
 
@@ -45,12 +45,12 @@ jobs:
 
     steps:
       - name: "Checkout"
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: "Install Node"
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v5
         with:
-          node-version: "18"
+          node-version: "22"
           cache: "npm"
           cache-dependency-path: website/package-lock.json
 
@@ -88,7 +88,7 @@ jobs:
     concurrency: website
     steps:
       - name: "Download website dist"
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v5
         with:
           name: website-dist
           path: dist
@@ -113,7 +113,7 @@ jobs:
           AWS_ACCESS_KEY_ID: ${{ secrets.PLAYGROUND_RUNNER_AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.PLAYGROUND_RUNNER_AWS_SECRET_ACCESS_KEY }}
 
-      - uses: peter-evans/repository-dispatch@v3
+      - uses: peter-evans/repository-dispatch@v4
         with:
           token: ${{ secrets.PHPSTAN_BOT_TOKEN }}
           event-type: check_website_links
@@ -126,10 +126,10 @@ jobs:
     concurrency: website
     steps:
       - name: "Checkout"
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: "Download website dist"
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v5
         with:
           name: website-dist
           path: dist
@@ -139,7 +139,7 @@ jobs:
         run: echo "sha_short=$(git rev-parse --short HEAD)" >> $GITHUB_OUTPUT
 
       - name: Create Sentry release
-        uses: getsentry/action-release@v1
+        uses: getsentry/action-release@v3
         env:
           SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
           SENTRY_ORG: ${{ secrets.SENTRY_ORG }}

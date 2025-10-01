@@ -25,7 +25,7 @@ jobs:
       checksum-result: ${{ steps.checksum-difference.outputs.result }}
     steps:
       - name: "Checkout"
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           repository: "phpstan/phpstan"
           ref: ${{ inputs.ref }}
@@ -146,7 +146,7 @@ jobs:
 
     steps:
       - name: "Checkout"
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           repository: "phpstan/phpstan"
           ref: ${{ inputs.ref }}
@@ -452,7 +452,7 @@ jobs:
 
     steps:
       - name: "Checkout"
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           repository: "phpstan/phpstan"
           ref: ${{ inputs.ref }}
@@ -476,7 +476,7 @@ jobs:
           attempt_delay: 1000
 
       - name: "Checkout project"
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           repository: "${{ matrix.repo }}"
           ref: "${{ matrix.ref }}"
@@ -509,14 +509,14 @@ jobs:
 
     steps:
       - name: "Checkout"
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           repository: "phpstan/phpstan"
           ref: ${{ inputs.ref }}
           token: ${{ secrets.phpstan-bot-token }}
 
       - name: "Download baselines"
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v5
         with:
           pattern: baselines-*
           merge-multiple: true
@@ -524,7 +524,7 @@ jobs:
 
       - name: "Create Pull Request"
         id: create-pr
-        uses: peter-evans/create-pull-request@v6
+        uses: peter-evans/create-pull-request@v7
         with:
           token: ${{ secrets.phpstan-bot-token }}
           branch: "create-pull-request/baselines-2.1.x"
@@ -544,7 +544,7 @@ jobs:
 
     steps:
       - name: "Checkout"
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           repository: "phpstan/phpstan"
           ref: ${{ inputs.ref }}
@@ -568,7 +568,7 @@ jobs:
           attempt_delay: 1000
 
       - name: "Checkout PMMP"
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           repository: "pmmp/PocketMine-MP"
           ref: 45698e4bb9012766c1fb0a2bad64d2621707f9b5

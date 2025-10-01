@@ -22,7 +22,7 @@ jobs:
       checksum-result: ${{ steps.checksum-difference.outputs.result }}
     steps:
       - name: "Checkout"
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           repository: "phpstan/phpstan"
           ref: ${{ inputs.ref }}
@@ -80,7 +80,7 @@ jobs:
 
     steps:
       - name: "Checkout"
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           repository: "phpstan/phpstan"
           ref: ${{ inputs.ref }}
@@ -106,7 +106,7 @@ jobs:
           attempt_delay: 1000
 
       - name: "Checkout extension"
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           repository: "phpstan/${{ matrix.extension-name }}"
           path: extension
